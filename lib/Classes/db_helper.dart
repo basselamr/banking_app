@@ -36,14 +36,14 @@ class dbHelper {
         'lname': 'Doe',
         'email': 'john@example.com',
         'phonenum': '123-456-7890',
-        'currentBalance': 1000.0,
+        'currentBalance': 8500.0,
       },
       {
         'fname': 'Robert',
         'lname': 'Joseph',
         'email': 'Robert@example.com',
         'phonenum': '123-546-7990',
-        'currentBalance': 2000.0,
+        'currentBalance': 2500.0,
       },
       {
         'fname': 'Thomas',
@@ -57,7 +57,7 @@ class dbHelper {
         'lname': 'William',
         'email': 'Nancy@example.com',
         'phonenum': '321-456-7890',
-        'currentBalance': 1500.0,
+        'currentBalance': 4000.0,
       },
       {
         'fname': 'Jennifer',
@@ -65,6 +65,27 @@ class dbHelper {
         'email': 'Jennifer@example.com',
         'phonenum': '944-654-3210',
         'currentBalance': 1500.0,
+      },
+      {
+        'fname': 'Martin',
+        'lname': 'Michael',
+        'email': 'Martin@example.com',
+        'phonenum': '817-654-7890',
+        'currentBalance': 200.0,
+      },
+      {
+        'fname': 'Sophia',
+        'lname': 'Clark',
+        'email': 'Sophia@example.com',
+        'phonenum': '999-654-7890',
+        'currentBalance': 1000.0,
+      },
+      {
+        'fname': 'Emma',
+        'lname': 'White',
+        'email': 'Emma@example.com',
+        'phonenum': '123-004-7890',
+        'currentBalance': 500.0,
       }
     ];
     for (final userData in dummyUsersData) {
@@ -87,6 +108,8 @@ class dbHelper {
     var databasesPath = await getDatabasesPath();
     var path = join(databasesPath, 'my_database.db');
     Database myDB = await openDatabase(path, onCreate: _onCR, version: 1);
+    await myDB.execute("DELETE FROM Transfers");
+
     return myDB;
   }
 
